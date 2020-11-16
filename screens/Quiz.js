@@ -16,61 +16,79 @@ const Quiz = ({route, navigation}) => {
   const [answerCorrect, setAnswerCorrect] = useState(false); 
 
   const optionSelected = (text, correct) => {
-    console.log(text);
+    //console.log(text);
     setAnswered(true);
     if(correct) {
-      setCorrectCount(correctCount + 1); 
       setAnswerCorrect(true);
-    }
-    else {
+      setCorrectCount(correctCount + 1); 
+    } else {
       setAnswerCorrect(false);
     }
+    
     setTimeout(nextQuestion, 1000);
   }
 
   const nextQuestion = () => {
-    const nextIndex = activeQuestionIndex + 1; 
-    if(nextIndex >= totalCount) {
-      navigation.popToTop();
-    }
-    setActiveQuestionIndex(nextIndex);
+    setActiveQuestionIndex(activeQuestionIndex + 1);
     setAnswered(false);
-    console.log(activeQuestionIndex);
   }
 
   const question = questions[activeQuestionIndex];
   return (
     <View>
-      <Text>Quiz Screen</Text>
-      <Text>{title}</Text>
-      {activeQuestionIndex < totalCount ? (
-        <View>
-          <Text style={styles.questionText}>{question.question}</Text>
-          <View style={styles.btnContainer}>
-            {question.answers.map(answer => (
-              <Btn key={answer.id} text={answer.text} onPress={() => optionSelected(answer.text, answer.correct)} />
-            ))}
+      <Text style={styles.titleText}>{title}</Text>
+       
+      {activeQuestionIndex < totalCount ? 
+        (
+          <View>
+            <Text style={styles.countText}>Current question: {`${activeQuestionIndex + 1}/${totalCount}`}</Text>
+            <Text style={styles.questionText}>{question.question}</Text>
+            <View style={styles.btnContainer}>
+              {question.answers.map(answer => (
+                <Btn key={answer.id} text={answer.text} onPress={() => optionSelected(answer.text, answer.correct)} />
+              ))}
+            </View>
+            <Alert
+              correct={answerCorrect}
+              visible={answered}
+            />
+            <Text style={styles.countText}>No. of correct answers: {`${correctCount}/${totalCount}`}</Text>
+
           </View>
-          <Alert
-            correct={answerCorrect}
-            visible={answered}
-          />
-        </View>
-      ) : null}
+        ) : 
+        (
+          <View style={styles.btnContainer}>
+            <Btn onPress={() => navigation.navigate("ResultScreen", {correctCount: correctCount})} 
+              text="See your result" />
+          </View>
+        )
+      }
       
-    
     </View>
-  ); 
+  );
 }
 
 const styles = StyleSheet.create({
+  titleText: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+  },
   questionText: {
     fontSize: 20,
-    margin: 40,
+    marginHorizontal: 40,
+    marginTop: 20,
+    marginBottom: -10,
   },
   btnContainer: {
     margin: 40,
-  }  
+  },
+  countText: {
+    fontSize: 16,
+    textAlign: 'center'
+  }
 })
 
 export default Quiz;

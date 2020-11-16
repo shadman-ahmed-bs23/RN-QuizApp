@@ -17,15 +17,17 @@ const QuizTopic = ({ onPress=() => {}, name}) => {
 const styles = StyleSheet.create({
   topicContainer: {
     marginHorizontal: 20,
-    marginVertical: 10, 
+    marginTop: 20,
     padding: 15,
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#ddd',
+    borderRadius: 10,
     elevation: 3,
   }, 
   topicText: {
     fontSize: 20,
+    fontWeight: 'bold'
   }
 })
 

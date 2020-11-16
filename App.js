@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import AboutScreen from './screens/AboutScreen';
 import QuizIndex from './screens/QuizIndex';
 import Quiz from './screens/Quiz';
+import ResultScreen from './screens/ResultScreen';
 
 const Stack = createStackNavigator(); 
 
@@ -54,7 +55,16 @@ function App() {
           name='Quiz' 
           component={Quiz}
           options={{
-            title: 'Quiz'
+            title: 'Quiz',
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen 
+          name='ResultScreen' 
+          component={ResultScreen}
+          options={{
+            title: 'Result Screen',
+            headerLeft: null,
           }}
         />
 
