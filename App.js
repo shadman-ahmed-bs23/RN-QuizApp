@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import AboutScreen from './screens/AboutScreen';
 import QuizIndex from './screens/QuizIndex';
+import Quiz from './screens/Quiz';
 
 const Stack = createStackNavigator(); 
 
@@ -47,6 +48,13 @@ function App() {
           component={QuizIndex}
           options={{
             title: 'Choose Quiz Topic'
+          }}
+        />
+        <Stack.Screen 
+          name='Quiz' 
+          component={Quiz}
+          options={{
+            title: 'Quiz'
           }}
         />
 
