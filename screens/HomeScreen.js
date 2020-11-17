@@ -5,9 +5,7 @@ import Btn from '../components/Btn';
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>
-        Home Screen
-      </Text>
+      
       <Btn text="Go to Quiz Index" onPress={() => navigation.navigate('Quiz Index')} />
       
       <Btn text="About the App" onPress={() => navigation.navigate('About')} />
@@ -21,6 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center', 
     alignItems: 'center',
+    margin: 20,
   }
 })
 

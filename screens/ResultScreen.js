@@ -5,21 +5,26 @@ import Btn from '../components/Btn';
 const ResultScreen = ({route, navigation}) => {
   const { correctCount } = route.params;
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.resultText}>
-        ResultScreen {correctCount}
+        Your Score: {correctCount}
       </Text>
       <View style={styles.btnContainer}>
-        <Btn onPress={() => navigation.navigate("Home")} text="Go to Home" />
+        <Btn onPress={() => navigation.navigate("Home")} text="Go back to Home" />
       </View>
     </View>
   ); 
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center', 
+    alignItems: 'center',
+  },
   resultText: {
     margin: 20,
-    fontSize: 20,
+    fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
   },
