@@ -8,6 +8,8 @@ const HomeScreen = ({ navigation }) => {
       
       <Btn text="Go to Quiz Index" onPress={() => navigation.navigate('Quiz Index')} />
       
+      <Btn text="Login" onPress={() => navigation.navigate('Login')} />
+
       <Btn text="About the App" onPress={() => navigation.navigate('About')} />
       
     </View>

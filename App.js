@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import {View, Text} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
@@ -7,6 +8,10 @@ import AboutScreen from './screens/AboutScreen';
 import QuizIndex from './screens/QuizIndex';
 import Quiz from './screens/Quiz';
 import ResultScreen from './screens/ResultScreen';
+import Login from './screens/Login';
+import SignUp from './screens/SignUp';
+import AddQuiz from './screens/AddQuiz';
+import LogoutBtn from './components/LogoutBtn';
 
 const Stack = createStackNavigator(); 
 
@@ -66,6 +71,31 @@ function App() {
             title: 'Result Screen',
             headerLeft: null,
           }}
+        />
+        <Stack.Screen 
+          name='Login' 
+          component={Login}
+          options={{
+            title: 'Login',
+          }}
+        />
+        <Stack.Screen 
+          name='SignUp' 
+          component={SignUp}
+          options={{
+            title: 'Sign Up',
+          }}
+        />
+        <Stack.Screen 
+          name='AddQuiz' 
+          component={AddQuiz}
+          options={{
+            title: 'Add Quiz',
+            headerLeft: null,
+            headerRightContainerStyle: {
+              margin: 15,
+            }
+          }} 
         />
 
       </Stack.Navigator>
